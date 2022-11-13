@@ -1,7 +1,8 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ESLintPlugin = require('eslint-webpack-plugin'); 
+const ESLintPlugin = require('eslint-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: './src/js/index.js',
@@ -14,12 +15,13 @@ module.exports = {
   },
   devtool: 'eval-source-map',
   plugins: [
+    new Dotenv(),
     new ESLintPlugin(),
     new CleanWebpackPlugin({
       verbose: true
     }),
     new HtmlWebpackPlugin({
-      title: 'epicodus-dev-env-template',
+      title: 'weather-api',
       template: './src/html/index.html',
       inject: 'body'
     })
